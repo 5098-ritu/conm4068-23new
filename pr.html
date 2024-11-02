@@ -1,0 +1,1549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program Questions</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+        .container {
+            display: flex;
+            flex: 1;
+            padding: 20px;
+            justify-content: space-between;
+        }
+
+        .question-list {
+            flex: 1;
+            padding: 20px;
+            background-color: #DFFFD6;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            font-size: large;
+        }
+
+        .code-output-container {
+            flex: 2;
+            display: none;
+            flex-direction: column;
+            font-size: large;
+        }
+
+        .code-container,
+        .output-container {
+            flex: 1;
+            padding: 20px;
+            background-color: #C8E6C9;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            margin-top: 0;
+            text-align: center;
+        }
+
+        pre {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        a {
+            color: blue;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="pr.html">Programs</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </header>
+    </nav>
+    <div class="container">
+        <div class="question-list">
+            <h2>Program Questions</h2>
+            <ul>
+                <li><a href="#" onclick="showProgram(1)" style="color: black;">1. Program of Bisection Method</a></li>
+                <li><a href="#" onclick="showProgram(2)" style="color: black;">2. Program of Regula Falsi Method</a></li>
+                <li><a href="#" onclick="showProgram(3)" style="color: black;">3. Program of Secant Method</a></li>
+                <li><a href="#" onclick="showProgram(4)" style="color: black;">4. Program of Newton Raphson Method</a></li>
+                <li><a href="#" onclick="showProgram(5)" style="color: black;">5. Program of Gauss Elimination Method</a></li>
+                <li><a href="#" onclick="showProgram(6)" style="color: black;">6. Program of Birge Vieta Method</a></li>
+                <li><a href="#" onclick="showProgram(7)" style="color: black;">7. Program of Gauss Jordan Method</a></li>
+                <li><a href="#" onclick="showProgram(8)" style="color: black;">8. Program of Gauss Seidel Method</a></li>
+                <li><a href="#" onclick="showProgram(9)" style="color: black;">9. Program of Lagrange's Interpolation Method</a></li>
+                <li><a href="#" onclick="showProgram(10)" style="color: black;">10. Program of Lagrange's Inverse Interpolation Method</a></li>
+                <li><a href="#" onclick="showProgram(11)" style="color: black;">11. Program of Newton's Forward Method</a></li>
+                <li><a href="#" onclick="showProgram(12)" style="color: black;">12. Program of Newton's Backward Method</a></li>
+                <li><a href="#" onclick="showProgram(13)" style="color: black;">13. Program of Newton's Dividend Method</a></li>
+                <li><a href="#" onclick="showProgram(14)" style="color: black;">14. Program of Trapzoidal Method</a></li>
+                <li><a href="#" onclick="showProgram(15)" style="color: black;">15. Program of Simpson 1/3 rule Method</a></li>
+                <li><a href="#" onclick="showProgram(16)" style="color: black;">16. Program of Simpson 3/8 rule  Method</a></li>
+                <li><a href="#" onclick="showProgram(17)" style="color: black;">17. Program of Euler's Method</a></li>
+                <li><a href="#" onclick="showProgram(18)" style="color: black;">18. Program of Modified Euler's Method</a></li>
+                <li><a href="#" onclick="showProgram(19)" style="color: black;">19. Program of Runge Kutta 2nd order Method</a></li>
+                <li><a href="#" onclick="showProgram(20)" style="color: black;">20. Program of Runge Kutta 4th order Method</a></li>
+                <li><a href="#" onclick="showProgram(21)" style="color: black;">21. Program of Taylor Series Method</a></li>
+                <li><a href="#" onclick="showProgram(22)" style="color: black;">22. Program of Chebyshev Polynomials Method</a></li>
+            </ul>
+        </div>
+        <div class="code-output-container" id="output-container">
+            <div class="code-container" id="code1">
+                <h2>Code for Question 1</h2>
+                <pre><code>
+#include < stdio.h>
+#include < math.h>
+
+double function(double x) {
+    return x * x - 4;
+}
+
+void bisection(double a, double b, double tol) {
+    if (function(a) * function(b) >= 0) {
+        printf("Bisection method fails. f(a) and f(b) must have different signs.\n");
+        return;
+    }
+
+    double c;
+    while ((b - a) >= tol) {
+        c = (a + b) / 2;
+
+        if (function(c) == 0.0) {
+            break;
+        }
+        if (function(c) * function(a) < 0) {
+            b = c;
+        } else {
+            a = c;
+        }
+    }
+    printf("The root is: %.5f\n", c);
+}
+
+int main() {
+    double a, b, tol;
+
+    printf("Enter the interval [a, b]: ");
+    scanf("%lf %lf", &a, &b);
+    printf("Enter the tolerance: ");
+    scanf("%lf", &tol);
+
+    bisection(a, b, tol);
+
+    return 0;
+}
+                </code></pre>
+            </div>
+            <div class="output-container" id="output1">
+                <h2>Output</h2>
+                <pre><code>
+Enter the interval [a, b]: 0 3
+Enter the tolerance: 0.001
+The root is: 2.00000
+                </code></pre>
+            </div>
+            <div class="code-container" id="code2">
+                <h2>Code for Question 2</h2>
+                <pre><code>
+#include < stdio.h>
+#include < math.h>
+
+double function(double x) {
+    return x * x - 4;
+}
+
+void regulaFalsi(double a, double b, double tol) {
+    if (function(a) * function(b) >= 0) {
+        return;
+    }
+
+    double c;
+    while (1) {
+        c = (a * function(b) - b * function(a)) / (function(b) - function(a));
+        if (fabs(function(c)) <= tol) break;
+
+        if (function(c) * function(a) < 0) {
+            b = c;
+        } else {
+            a = c;
+        }
+    }
+
+    printf("The root is: %.5f\n", c);
+}
+
+int main() {
+    double a, b, tol;
+    printf("Enter the interval [a, b]: ");
+    scanf("%lf %lf", &a, &b);
+    printf("Enter the tolerance: ");
+    scanf("%lf", &tol);
+    regulaFalsi(a, b, tol);
+    return 0;
+}
+                </code></pre>
+            </div>
+            <div class="output-container" id="output2">
+                <h2>Output</h2>
+                <pre><code>
+Enter the interval [a, b]: 0 3
+Enter the tolerance: 0.001
+The root is: 2.00000
+                </code></pre>
+            </div>
+            <div class="code-container" id="code3">
+                <h2>Code for Question 3</h2>
+                <pre><code>
+#include < stdio.h>
+#include < math.h>
+
+double function(double x) {
+    return x * x - 4;
+}
+
+void secantMethod(double x0, double x1, double tol) {
+    double x2;
+
+    while (fabs(function(x1)) > tol) {
+        x2 = x1 - (function(x1) * (x1 - x0)) / (function(x1) - function(x0));
+        x0 = x1;
+        x1 = x2;
+    }
+
+    printf("The root is: %.5f\n", x2);
+}
+
+int main() {
+    double x0, x1, tol;
+
+    printf("Enter the initial guesses x0 and x1: ");
+    scanf("%lf %lf", &x0, &x1);
+    printf("Enter the tolerance: ");
+    scanf("%lf", &tol);
+
+    secantMethod(x0, x1, tol);
+
+    return 0;
+}
+                </code></pre>
+            </div>
+            <div class="output-container" id="output3">
+                <h2>Output</h2>
+                <pre><code>
+Enter the initial guesses x0 and x1: 1 3
+Enter the tolerance: 0.001
+The root is: 2.00000
+                </code></pre>
+            </div>
+            <div class="code-container" id="code4">
+                <h2>Code for Question 4</h2>
+<pre><code>
+    #include < stdio.h>
+        #include < math.h>
+        
+        double function(double x) {
+            return x * x - 4; // Example function: f(x) = x^2 - 4
+        }
+        
+        double derivative(double x) {
+            return 2 * x; // Derivative of f(x)
+        }
+        
+        void newtonRaphson(double initialGuess, double tolerance) {
+            double x0 = initialGuess;
+            double x1;
+            
+            do {
+                x1 = x0 - function(x0) / derivative(x0);
+                if (fabs(x1 - x0) < tolerance) {
+                    break;
+                }
+                x0 = x1;
+            } while (1);
+        
+            printf("The root is: %.5f\n", x1);
+        }
+        
+        int main() {
+            double initialGuess, tolerance;
+        
+            printf("Enter the initial guess: ");
+            scanf("%lf", &initialGuess);
+            printf("Enter the tolerance: ");
+            scanf("%lf", &tolerance);
+        
+            newtonRaphson(initialGuess, tolerance);
+        
+            return 0;
+        }
+                       
+</code></pre>
+            </div>
+            <div class="output-container" id="output4">
+                <h2>Output</h2>
+<pre><code>
+    Enter the initial guess: 3
+    Enter the tolerance: 0.001
+    The root is: 2.00000        
+</code></pre>
+        </div>     
+        <div class="code-container" id="code5">
+            <h2>Code for Question 5</h2>
+<pre><code>
+    #include < stdio.h>
+
+        #define MAX 10
+        
+        void gaussElimination(float a[MAX][MAX], float b[MAX], int n) {
+            for (int i = 0; i < n; i++) {
+                // Partial pivoting
+                for (int k = i + 1; k < n; k++) {
+                    if (a[k][i] > a[i][i]) {
+                        for (int j = 0; j < n; j++) {
+                            float temp = a[i][j];
+                            a[i][j] = a[k][j];
+                            a[k][j] = temp;
+                        }
+                        float temp = b[i];
+                        b[i] = b[k];
+                        b[k] = temp;
+                    }
+                }
+        
+                // Forward elimination
+                for (int k = i + 1; k < n; k++) {
+                    float factor = a[k][i] / a[i][i];
+                    for (int j = i; j < n; j++) {
+                        a[k][j] -= factor * a[i][j];
+                    }
+                    b[k] -= factor * b[i];
+                }
+            }
+        
+            // Back substitution
+            float x[MAX];
+            for (int i = n - 1; i >= 0; i--) {
+                x[i] = b[i];
+                for (int j = i + 1; j < n; j++) {
+                    x[i] -= a[i][j] * x[j];
+                }
+                x[i] /= a[i][i];
+            }
+        
+            // Display the results
+            printf("Solutions:\n");
+            for (int i = 0; i < n; i++) {
+                printf("x%d = %.2f\n", i + 1, x[i]);
+            }
+        }
+        
+        int main() {
+            int n;
+            float a[MAX][MAX], b[MAX];
+        
+            printf("Enter the number of equations: ");
+            scanf("%d", &n);
+            printf("Enter the coefficients of the equations:\n");
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    scanf("%f", &a[i][j]);
+                }
+                scanf("%f", &b[i]); // Right-hand side
+            }
+        
+            gaussElimination(a, b, n);
+        
+            return 0;
+        }
+            
+</code></pre>
+        </div>
+        <div class="output-container" id="output5">
+            <h2>Output</h2>
+<pre><code>
+    Enter the number of equations: 3
+    Enter the coefficients of the equations:
+    2 1 -1
+    -3 -1 2
+    -2 1 2
+    8
+    Solutions:
+    x1 = 2.00
+    x2 = 3.00
+    x3 = -1.00
+            
+</code></pre>
+    </div>
+    <div class="code-container" id="code6">
+        <h2>Code for Question 6</h2>
+<pre><code>
+    #include < stdio.h>
+        #include < math.h>
+        
+        #define MAX 10
+        
+        void birgeVieta(float coeff[MAX], int degree, float initialGuess, float tolerance) {
+            float x = initialGuess;
+            float f, f_prime;
+            int iteration = 0;
+        
+            do {
+                // Calculate the polynomial value and its derivative using synthetic division
+                float p[MAX] = {0}; // Array to hold synthetic division results
+                p[0] = coeff[0];
+        
+                for (int i = 1; i <= degree; i++) {
+                    p[i] = coeff[i] + x * p[i - 1];
+                }
+        
+                f = p[degree];
+                f_prime = p[degree - 1];
+        
+                // Update the guess using Birge-Vieta formula
+                x = x - f / f_prime;
+        
+                printf("Iteration %d: x = %.6f, f(x) = %.6f\n", iteration++, x, f);
+        
+            } while (fabs(f) > tolerance && iteration < 100); // Max 100 iterations
+        
+            printf("Approximate root: %.6f\n", x);
+        }
+        
+        int main() {
+            int degree;
+            float coeff[MAX], initialGuess, tolerance;
+        
+            printf("Enter the degree of the polynomial: ");
+            scanf("%d", &degree);
+        
+            printf("Enter the coefficients (from highest degree to constant term):\n");
+            for (int i = 0; i <= degree; i++) {
+                scanf("%f", &coeff[i]);
+            }
+        
+            printf("Enter the initial guess: ");
+            scanf("%f", &initialGuess);
+        
+            printf("Enter the tolerance: ");
+            scanf("%f", &tolerance);
+        
+            birgeVieta(coeff, degree, initialGuess, tolerance);
+        
+            return 0;
+        }
+        
+</code></pre>
+    </div>
+    <div class="output-container" id="output6">
+        <h2>Output</h2>
+<pre><code>
+    Enter the degree of the polynomial: 2
+    Enter the coefficients (from highest degree to constant term):
+    1 -3 2
+    Enter the initial guess: 3
+    Enter the tolerance: 0.001
+
+Iteration 0: x = 3.000000, f(x) = 2.000000
+Iteration 1: x = 2.500000, f(x) = 0.500000
+Iteration 2: x = 2.000000, f(x) = 0.000000
+Approximate root: 2.000000
+
+</code></pre>
+</div>
+<div class="code-container" id="code7">
+    <h2>Code for Question 7</h2>
+<pre><code>
+    #include < stdio.h>
+        #include < math.h>
+        
+        #define MAX 10
+        
+        void gaussJordan(float a[MAX][MAX], float b[MAX], int n) {
+            // Forward elimination
+            for (int i = 0; i < n; i++) {
+                // Pivoting
+                for (int k = i + 1; k < n; k++) {
+                    if (fabs(a[k][i]) > fabs(a[i][i])) {
+                        for (int j = 0; j < n; j++) {
+                            float temp = a[i][j];
+                            a[i][j] = a[k][j];
+                            a[k][j] = temp;
+                        }
+                        float temp = b[i];
+                        b[i] = b[k];
+                        b[k] = temp;
+                    }
+                }
+        
+                // Normalize the pivot row
+                float pivot = a[i][i];
+                for (int j = 0; j < n; j++) {
+                    a[i][j] /= pivot;
+                }
+                b[i] /= pivot;
+        
+                // Eliminate all other entries in this column
+                for (int k = 0; k < n; k++) {
+                    if (k != i) {
+                        float factor = a[k][i];
+                        for (int j = 0; j < n; j++) {
+                            a[k][j] -= factor * a[i][j];
+                        }
+                        b[k] -= factor * b[i];
+                    }
+                }
+            }
+        
+            printf("Solutions:\n");
+            for (int i = 0; i < n; i++) {
+                printf("x%d = %.6f\n", i + 1, b[i]);
+            }
+        }
+        
+        int main() {
+            int n;
+            float a[MAX][MAX], b[MAX];
+        
+            printf("Enter the number of equations: ");
+            scanf("%d", &n);
+            printf("Enter the coefficients of the equations (augmented matrix):\n");
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    scanf("%f", &a[i][j]);
+                }
+                scanf("%f", &b[i]); // Right-hand side
+            }
+        
+            gaussJordan(a, b, n);
+        
+            return 0;
+        }
+        
+</code></pre>
+</div>
+<div class="output-container" id="output7">
+    <h2>Output</h2>
+<pre><code>
+    Enter the number of equations: 3
+    Enter the coefficients of the equations (augmented matrix):
+    2 1 -1 8
+    -3 -1 2 -11
+    -2 1 2 -3
+    Solutions:
+    x1 = 2.000000
+    x2 = 3.000000
+    x3 = -1.000000
+        
+</code></pre>
+</div>
+<div class="code-container" id="code8">
+    <h2>Code for Question 8</h2>
+<pre><code>
+    #include < stdio.h>
+        #include < math.h>
+        
+        #define MAX 10
+        
+        void gaussSeidel(float a[MAX][MAX], float b[MAX], float x[MAX], int n, float tolerance) {
+            float error;
+            int iterations = 0;
+        
+            do {
+                error = 0.0;
+                for (int i = 0; i < n; i++) {
+                    float sum = 0.0;
+        
+                    for (int j = 0; j < n; j++) {
+                        if (j != i) {
+                            sum += a[i][j] * x[j];
+                        }
+                    }
+        
+                    float newX = (b[i] - sum) / a[i][i];
+                    error = fmax(error, fabs(newX - x[i])); // Track the maximum error
+                    x[i] = newX; // Update the solution
+                }
+                iterations++;
+            } while (error > tolerance);
+        
+            printf("Converged after %d iterations:\n", iterations);
+            for (int i = 0; i < n; i++) {
+                printf("x%d = %.6f\n", i + 1, x[i]);
+            }
+        }
+        
+        int main() {
+            int n;
+            float a[MAX][MAX], b[MAX], x[MAX], tolerance;
+        
+            printf("Enter the number of equations: ");
+            scanf("%d", &n);
+            printf("Enter the coefficients of the equations (matrix A):\n");
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    scanf("%f", &a[i][j]);
+                }
+            }
+            printf("Enter the right-hand side (vector b):\n");
+            for (int i = 0; i < n; i++) {
+                scanf("%f", &b[i]);
+            }
+            
+            printf("Enter the initial guess for the solutions:\n");
+            for (int i = 0; i < n; i++) {
+                scanf("%f", &x[i]);
+            }
+        
+            printf("Enter the tolerance for convergence:\n");
+            scanf("%f", &tolerance);
+        
+            gaussSeidel(a, b, x, n, tolerance);
+        
+            return 0;
+        }
+        
+</code></pre>
+</div>
+<div class="output-container" id="output8">
+    <h2>Output</h2>
+<pre><code>
+    Enter the number of equations: 3
+    Enter the coefficients of the equations (matrix A):
+    4 -1 0 1
+    -2 5 1 2
+    0 1 3 -1
+    Enter the right-hand side (vector b):
+    11
+    13
+    3
+    Enter the initial guess for the solutions:
+    0
+    0
+    0
+    Enter the tolerance for convergence:
+    0.001
+    Converged after 8 iterations:
+    x1 = 2.000000
+    x2 = 3.000000
+    x3 = -1.000000
+        
+</code></pre>
+</div>
+<div class="code-container" id="code9">
+    <h2>Code for Question 9</h2>
+<pre><code>
+    #include < stdio.h>
+
+        double lagrangeInterpolation(double x[], double y[], int n, double xValue) {
+            double result = 0.0;
+        
+            for (int i = 0; i < n; i++) {
+                double term = y[i];
+                for (int j = 0; j < n; j++) {
+                    if (j != i) {
+                        term *= (xValue - x[j]) / (x[i] - x[j]);
+                    }
+                }
+                result += term;
+            }
+        
+            return result;
+        }
+        
+        int main() {
+            int n;
+            double x[10], y[10], xValue;
+        
+            printf("Enter the number of data points: ");
+            scanf("%d", &n);
+            
+            printf("Enter the x and y values:\n");
+            for (int i = 0; i < n; i++) {
+                printf("x[%d]: ", i);
+                scanf("%lf", &x[i]);
+                printf("y[%d]: ", i);
+                scanf("%lf", &y[i]);
+            }
+        
+            printf("Enter the value of x to interpolate: ");
+            scanf("%lf", &xValue);
+        
+            double interpolatedValue = lagrangeInterpolation(x, y, n, xValue);
+            
+            printf("The interpolated value at x = %.2f is %.6f\n", xValue, interpolatedValue);
+        
+            return 0;
+        }
+        
+</code></pre>
+</div>
+<div class="output-container" id="output9">
+    <h2>Output</h2>
+<pre><code>
+    Enter the number of data points: 3
+    Enter the x and y values:
+    x[0]: 1
+    y[0]: 1
+    x[1]: 2
+    y[1]: 4
+    x[2]: 3
+    y[2]: 9
+    Enter the value of x to interpolate: 1.5
+    The interpolated value at x = 1.50 is 2.250000
+    
+</code></pre>
+</div>
+<div class="code-container" id="code10">
+    <h2>Code for Question 10</h2>
+<pre><code>
+    #include < stdio.h>
+
+        double lagrangeInverseInterpolation(double x[], double y[], int n, double yValue) {
+            double result = 0.0;
+        
+            for (int i = 0; i < n; i++) {
+                double term = y[i];
+                for (int j = 0; j < n; j++) {
+                    if (j != i) {
+                        term *= (yValue - y[j]) / (y[i] - y[j]);
+                    }
+                }
+                result += term;
+            }
+        
+            return result;
+        }
+        
+        int main() {
+            int n;
+            double x[10], y[10], yValue;
+        
+            printf("Enter the number of data points: ");
+            scanf("%d", &n);
+            
+            printf("Enter the x and y values:\n");
+            for (int i = 0; i < n; i++) {
+                printf("x[%d]: ", i);
+                scanf("%lf", &x[i]);
+                printf("y[%d]: ", i);
+                scanf("%lf", &y[i]);
+            }
+        
+            printf("Enter the value of y to interpolate: ");
+            scanf("%lf", &yValue);
+        
+            double interpolatedXValue = lagrangeInverseInterpolation(x, y, n, yValue);
+            
+            printf("The interpolated x value corresponding to y = %.2f is %.6f\n", yValue, interpolatedXValue);
+        
+            return 0;
+        }
+        
+</code></pre>
+</div>
+<div class="output-container" id="output10">
+    <h2>Output</h2>
+<pre><code>
+    Enter the number of data points: 3
+    Enter the x and y values:
+    x[0]: 1
+    y[0]: 1
+    x[1]: 2
+    y[1]: 4
+    x[2]: 3
+    y[2]: 9
+    Enter the value of y to interpolate: 4
+    The interpolated x value corresponding to y = 4.00 is 1.666667
+    
+</code></pre>
+</div>
+<div class="code-container" id="code11">
+    <h2>Code for Question 11</h2>
+<pre><code>
+    #include < stdio.h>
+
+        #define MAX 10
+        
+        void computeForwardDifference(float x[], float y[][MAX], int n) {
+            for (int j = 1; j < n; j++) {
+                for (int i = 0; i < n - j; i++) {
+                    y[i][j] = y[i + 1][j - 1] - y[i][j - 1];
+                }
+            }
+        }
+        
+        float newtonForwardInterpolation(float x[], float y[][MAX], int n, float value) {
+            float h = x[1] - x[0];
+            float result = y[0][0];
+            float u = (value - x[0]) / h;
+            
+            for (int i = 1; i < n; i++) {
+                float term = 1;
+                for (int j = 0; j < i; j++) {
+                    term *= (u - j) / (i);
+                }
+                result += term * y[0][i];
+            }
+        
+            return result;
+        }
+        
+        int main() {
+            float x[MAX], y[MAX][MAX];
+            int n;
+            float value;
+        
+            printf("Enter the number of data points: ");
+            scanf("%d", &n);
+        
+            printf("Enter the x values:\n");
+            for (int i = 0; i < n; i++) {
+                printf("x[%d]: ", i);
+                scanf("%f", &x[i]);
+            }
+        
+            printf("Enter the corresponding y values:\n");
+            for (int i = 0; i < n; i++) {
+                printf("y[%d]: ", i);
+                scanf("%f", &y[i][0]);
+            }
+        
+            computeForwardDifference(x, y, n);
+        
+            printf("Enter the value of x to interpolate: ");
+            scanf("%f", &value);
+        
+            float interpolatedValue = newtonForwardInterpolation(x, y, n, value);
+        
+            printf("The interpolated value at x = %.2f is %.6f\n", value, interpolatedValue);
+        
+            return 0;
+        }
+        
+</code></pre>
+</div>
+<div class="output-container" id="output11">
+    <h2>Output</h2>
+<pre><code>
+    Enter the number of data points: 5
+    Enter the x values:
+    x[0]: 0
+    x[1]: 1
+    x[2]: 2
+    x[3]: 3
+    x[4]: 4
+    Enter the corresponding y values:
+    y[0]: 1
+    y[1]: 2
+    y[2]: 0
+    y[3]: 2
+    y[4]: 3
+    Enter the value of x to interpolate: 2.5
+    The interpolated value at x = 2.50 is 1.562500
+    
+</code></pre>
+</div>
+<div class="code-container" id="code12">
+    <h2>Code for Question 12</h2>
+<pre><code>
+    #include < stdio.h>
+
+        #define MAX 10
+        
+        void computeBackwardDifference(float x[], float y[][MAX], int n) {
+            for (int j = 1; j < n; j++) {
+                for (int i = n - 1; i >= j; i--) {
+                    y[i][j] = y[i][j - 1] - y[i - 1][j - 1];
+                }
+            }
+        }
+        
+        float newtonBackwardInterpolation(float x[], float y[][MAX], int n, float value) {
+            float h = x[1] - x[0];
+            float result = y[n - 1][0];
+            float u = (value - x[n - 1]) / h;
+        
+            for (int i = 1; i < n; i++) {
+                float term = 1;
+                for (int j = 0; j < i; j++) {
+                    term *= (u + j) / (i);
+                }
+                result += term * y[n - 1 - i][i];
+            }
+        
+            return result;
+        }
+        
+        int main() {
+            float x[MAX], y[MAX][MAX];
+            int n;
+            float value;
+        
+            printf("Enter the number of data points: ");
+            scanf("%d", &n);
+        
+            printf("Enter the x values:\n");
+            for (int i = 0; i < n; i++) {
+                printf("x[%d]: ", i);
+                scanf("%f", &x[i]);
+            }
+        
+            printf("Enter the corresponding y values:\n");
+            for (int i = 0; i < n; i++) {
+                printf("y[%d]: ", i);
+                scanf("%f", &y[i][0]);
+            }
+        
+            computeBackwardDifference(x, y, n);
+        
+            printf("Enter the value of x to interpolate: ");
+            scanf("%f", &value);
+        
+            float interpolatedValue = newtonBackwardInterpolation(x, y, n, value);
+        
+            printf("The interpolated value at x = %.2f is %.6f\n", value, interpolatedValue);
+        
+            return 0;
+        }
+        
+</code></pre>
+</div>
+<div class="output-container" id="output12">
+    <h2>Output</h2>
+<pre><code>
+    Enter the number of data points: 5
+    Enter the x values:
+    x[0]: 0
+    x[1]: 1
+    x[2]: 2
+    x[3]: 3
+    x[4]: 4
+    Enter the corresponding y values:
+    y[0]: 1
+    y[1]: 2
+    y[2]: 0
+    y[3]: 2
+    y[4]: 3
+    Enter the value of x to interpolate: 1.5
+    The interpolated value at x = 1.50 is 1.500000
+    
+</code></pre>
+</div>
+<div class="code-container" id="code13">
+    <h2>Code for Question 13</h2>
+<pre><code>
+    #include < stdio.h>
+
+        #define MAX 10
+        
+        void computeDividedDifferences(float x[], float y[][MAX], int n) {
+            for (int j = 1; j < n; j++) {
+                for (int i = 0; i < n - j; i++) {
+                    y[i][j] = (y[i + 1][j - 1] - y[i][j - 1]) / (x[i + j] - x[i]);
+                }
+            }
+        }
+        
+        float newtonDividedDifferenceInterpolation(float x[], float y[][MAX], int n, float value) {
+            float result = y[0][0];
+            float product;
+        
+            for (int i = 1; i < n; i++) {
+                product = 1;
+                for (int j = 0; j < i; j++) {
+                    product *= (value - x[j]);
+                }
+                result += product * y[0][i];
+            }
+        
+            return result;
+        }
+        
+        int main() {
+            float x[MAX], y[MAX][MAX];
+            int n;
+            float value;
+        
+            printf("Enter the number of data points: ");
+            scanf("%d", &n);
+        
+            printf("Enter the x values:\n");
+            for (int i = 0; i < n; i++) {
+                printf("x[%d]: ", i);
+                scanf("%f", &x[i]);
+            }
+        
+            printf("Enter the corresponding y values:\n");
+            for (int i = 0; i < n; i++) {
+                printf("y[%d]: ", i);
+                scanf("%f", &y[i][0]);
+            }
+        
+            computeDividedDifferences(x, y, n);
+        
+            printf("Enter the value of x to interpolate: ");
+            scanf("%f", &value);
+        
+            float interpolatedValue = newtonDividedDifferenceInterpolation(x, y, n, value);
+        
+            printf("The interpolated value at x = %.2f is %.6f\n", value, interpolatedValue);
+        
+            return 0;
+        }
+        
+</code></pre>
+</div>
+<div class="output-container" id="output13">
+    <h2>Output</h2>
+<pre><code>
+    Enter the number of data points: 4
+    Enter the x values:
+    x[0]: 0
+    x[1]: 1
+    x[2]: 2
+    x[3]: 3
+    Enter the corresponding y values:
+    y[0]: 1
+    y[1]: 2
+    y[2]: 0
+    y[3]: 2
+    Enter the value of x to interpolate: 1.5
+    The interpolated value at x = 1.50 is 1.250000
+    
+</code></pre>
+</div>
+<div class="code-container" id="code14">
+    <h2>Code for Question 14</h2>
+<pre><code>
+    #include < stdio.h>
+
+        // Function to be integrated
+        float f(float x) {
+            return x * x; // Example function: f(x) = x^2
+        }
+        
+        // Trapezoidal rule implementation
+        float trapezoidal(float a, float b, int n) {
+            float h = (b - a) / n; // Width of each trapezoid
+            float sum = 0.5 * (f(a) + f(b)); // Sum of the first and last terms
+        
+            for (int i = 1; i < n; i++) {
+                sum += f(a + i * h); // Add the middle terms
+            }
+        
+            return sum * h; // Final result
+        }
+        
+        int main() {
+            float a, b; // Integration limits
+            int n; // Number of trapezoids
+        
+            printf("Enter the lower limit (a): ");
+            scanf("%f", &a);
+            printf("Enter the upper limit (b): ");
+            scanf("%f", &b);
+            printf("Enter the number of trapezoids (n): ");
+            scanf("%d", &n);
+        
+            float result = trapezoidal(a, b, n);
+            printf("The approximate integral from %.2f to %.2f is %.6f\n", a, b, result);
+        
+            return 0;
+        }
+        
+</code></pre>
+</div>
+<div class="output-container" id="output14">
+    <h2>Output</h2>
+<pre><code>
+    Enter the lower limit (a): 0
+    Enter the upper limit (b): 3
+    Enter the number of trapezoids (n): 10
+    The approximate integral from 0.00 to 3.00 is 9.000000
+    
+</code></pre>
+</div>
+<div class="code-container" id="code15">
+    <h2>Code for Question 15</h2>
+<pre><code>
+    #include < stdio.h>
+
+        float f(float x) {
+            return x * x; 
+        }
+        
+        float simpsons13(float a, float b, int n) {
+            if (n % 2 != 0) {
+                printf("n must be even.\n");
+                return 0;
+            }
+        
+            float h = (b - a) / n;
+            float sum = f(a) + f(b);
+        
+            for (int i = 1; i < n; i++) {
+                if (i % 2 == 0) {
+                    sum += 2 * f(a + i * h);
+                } else {
+                    sum += 4 * f(a + i * h);
+                }
+            }
+        
+            return sum * (h / 3);
+        }
+        
+        int main() {
+            float a, b;
+            int n;
+        
+            printf("Enter the lower limit (a): ");
+            scanf("%f", &a);
+            printf("Enter the upper limit (b): ");
+            scanf("%f", &b);
+            printf("Enter the number of segments (n, must be even): ");
+            scanf("%d", &n);
+        
+            float result = simpsons13(a, b, n);
+            printf("The approximate integral from %.2f to %.2f is %.6f\n", a, b, result);
+        
+            return 0;
+        }
+        
+</code></pre>
+</div>
+<div class="output-container" id="output15">
+    <h2>Output</h2>
+<pre><code>
+    Enter the lower limit (a): 0
+    Enter the upper limit (b): 3
+    Enter the number of segments (n, must be even): 6
+    The approximate integral from 0.00 to 3.00 is 9.000000
+    
+</code></pre>
+</div>
+<div class="code-container" id="code16">
+    <h2>Code for Question 16</h2>
+<pre><code>
+    #include < stdio.h>
+
+        float f(float x) {
+            return x * x; 
+        }
+        
+        float simpsons38(float a, float b, int n) {
+            if (n % 3 != 0) {
+                printf("n must be a multiple of 3.\n");
+                return 0;
+            }
+        
+            float h = (b - a) / n;
+            float sum = f(a) + f(b);
+        
+            for (int i = 1; i < n; i++) {
+                if (i % 3 == 0) {
+                    sum += 2 * f(a + i * h);
+                } else {
+                    sum += 3 * f(a + i * h);
+                }
+            }
+        
+            return sum * (3 * h / 8);
+        }
+        
+        int main() {
+            float a, b;
+            int n;
+        
+            printf("Enter the lower limit (a): ");
+            scanf("%f", &a);
+            printf("Enter the upper limit (b): ");
+            scanf("%f", &b);
+            printf("Enter the number of segments (n, must be a multiple of 3): ");
+            scanf("%d", &n);
+        
+            float result = simpsons38(a, b, n);
+            printf("The approximate integral from %.2f to %.2f is %.6f\n", a, b, result);
+        
+            return 0;
+        }
+        
+</code></pre>
+</div>
+<div class="output-container" id="output16">
+    <h2>Output</h2>
+<pre><code>
+    Enter the lower limit (a): 0
+    Enter the upper limit (b): 3
+    Enter the number of segments (n, must be a multiple of 3): 6
+    The approximate integral from 0.00 to 3.00 is 9.000000
+    
+</code></pre>
+</div>
+<div class="code-container" id="code17">
+    <h2>Code for Question 17</h2>
+<pre><code>
+    #include < stdio.h>
+
+        float f(float x, float y) {
+            return x + y; 
+        }
+        
+        void euler(float x0, float y0, float h, int n) {
+            float x = x0;
+            float y = y0;
+        
+            printf("x\t\ty\n");
+            for (int i = 0; i < n; i++) {
+                printf("%.2f\t\t%.6f\n", x, y);
+                y = y + h * f(x, y);
+                x = x + h;
+            }
+        }
+        
+        int main() {
+            float x0, y0, h;
+            int n;
+        
+            printf("Enter initial values (x0, y0): ");
+            scanf("%f %f", &x0, &y0);
+            printf("Enter step size (h): ");
+            scanf("%f", &h);
+            printf("Enter number of steps (n): ");
+            scanf("%d", &n);
+        
+            euler(x0, y0, h, n);
+        
+            return 0;
+        }
+        
+</code></pre>
+</div>
+<div class="output-container" id="output17">
+    <h2>Output</h2>
+<pre><code>
+    Enter initial values (x0, y0): 0 1
+    Enter step size (h): 0.1
+    Enter number of steps (n): 10
+    x               y
+    0.00            1.000000
+    0.10            1.100000
+    0.20            1.210000
+    0.30            1.331000
+    0.40            1.464100
+    0.50            1.610510
+    0.60            1.771561
+    0.70            1.948717
+    0.80            2.143588
+    0.90            2.357947
+        
+</code></pre>
+</div>
+<div class="code-container" id="code18">
+    <h2>Code for Question 18</h2>
+<pre><code>
+    #include < stdio.h>
+
+        float f(float x, float y) {
+            return x + y; 
+        }
+        
+        void modified_euler(float x0, float y0, float h, int n) {
+            float x = x0;
+            float y = y0;
+        
+            printf("x\t\ty\n");
+            for (int i = 0; i <= n; i++) {
+                printf("%.2f\t\t%.6f\n", x, y);
+                float y_predict = y + h * f(x, y);
+                y = y + (h / 2) * (f(x, y) + f(x + h, y_predict));
+                x = x + h;
+            }
+        }
+        
+        int main() {
+            float x0, y0, h;
+            int n;
+        
+            printf("Enter initial values (x0, y0): ");
+            scanf("%f %f", &x0, &y0);
+            printf("Enter step size (h): ");
+            scanf("%f", &h);
+            printf("Enter number of steps (n): ");
+            scanf("%d", &n);
+        
+            modified_euler(x0, y0, h, n);
+        
+            return 0;
+        }
+        
+</code></pre>
+</div>
+<div class="output-container" id="output18">
+    <h2>Output</h2>
+<pre><code>
+    Enter initial values (x0, y0): 0 1
+    Enter step size (h): 0.1
+    Enter number of steps (n): 10
+    x               y
+    0.00            1.000000
+    0.10            1.100000
+    0.20            1.210000
+    0.30            1.331000
+    0.40            1.464100
+    0.50            1.610510
+    0.60            1.771561
+    0.70            1.948717
+    0.80            2.143588
+    0.90            2.357947
+    1.00            2.593060
+        
+</code></pre>
+</div>
+<div class="code-container" id="code19">
+    <h2>Code for Question 19</h2>
+<pre><code>
+    #include <stdio.h>
+
+        double f(double t, double y) {
+            return t + y;
+        }
+        
+        void rungeKutta2(double t0, double y0, double h, int n) {
+            double t = t0;
+            double y = y0;
+            
+            printf("t0 = %.2f, y0 = %.2f\n", t0, y0);
+            printf("Using step size h = %.2f\n", h);
+            printf("Results:\n");
+            printf("t\t\ty\n");
+            
+            for (int i = 0; i <= n; i++) {
+                printf("%.2f\t%.5f\n", t, y);
+                
+                double k1 = h * f(t, y);
+                double k2 = h * f(t + h, y + k1);
+                
+                y += (k1 + k2) / 2;
+                t += h;
+            }
+        }
+        
+        int main() {
+            double t0 = 0.0;
+            double y0 = 1.0;
+            double h = 0.1;
+            int n = 10;
+            
+            rungeKutta2(t0, y0, h, n);
+            
+            return 0;
+        }
+        
+</code></pre>
+</div>
+<div class="output-container" id="output19">
+    <h2>Output</h2>
+<pre><code>
+    t0 = 0.00, y0 = 1.00
+    Using step size h = 0.10
+    Results:
+    t		y
+    0.00	1.00000
+    0.10	1.10500
+    0.20	1.22105
+    0.30	1.34913
+    0.40	1.49027
+    0.50	1.64554
+    0.60	1.81609
+    0.70	2.00320
+    0.80	2.20821
+    0.90	2.43244
+    1.00	2.67746
+    
+</code></pre>
+</div>
+<div class="code-container" id="code20">
+    <h2>Code for Question 20</h2>
+<pre><code>
+    #include <stdio.h>
+
+        double f(double t, double y) {
+            return t + y;  // Example: dy/dt = t + y
+        }
+        
+        void rungeKutta4(double t0, double y0, double h, int n) {
+            double t = t0;
+            double y = y0;
+        
+            printf("t0 = %.2f, y0 = %.2f\n", t0, y0);
+            printf("Using step size h = %.2f\n", h);
+            printf("Results:\n");
+            printf("t\t\ty\n");
+        
+            for (int i = 0; i <= n; i++) {
+                printf("%.2f\t%.5f\n", t, y);
+        
+                double k1 = h * f(t, y);
+                double k2 = h * f(t + h / 2, y + k1 / 2);
+                double k3 = h * f(t + h / 2, y + k2 / 2);
+                double k4 = h * f(t + h, y + k3);
+        
+                y += (k1 + 2 * k2 + 2 * k3 + k4) / 6;
+                t += h;
+            }
+        }
+        
+        int main() {
+            double t0 = 0.0;
+            double y0 = 1.0;
+            double h = 0.1;
+            int n = 10;
+        
+            rungeKutta4(t0, y0, h, n);
+        
+            return 0;
+        }
+        
+</code></pre>
+</div>
+<div class="output-container" id="output20">
+    <h2>Output</h2>
+<pre><code>
+    t0 = 0.00, y0 = 1.00
+    Using step size h = 0.10
+    Results:
+    t		y
+    0.00	1.00000
+    0.10	1.10517
+    0.20	1.22140
+    0.30	1.34984
+    0.40	1.49059
+    0.50	1.64501
+    0.60	1.81459
+    0.70	2.00101
+    0.80	2.20523
+    0.90	2.42851
+    1.00	2.67214
+    
+</code></pre>
+</div>
+<div class="code-container" id="code21">
+    <h2>Code for Question 21</h2>
+<pre><code>
+    #include <stdio.h>
+
+        double factorial(int n) {
+            double result = 1.0;
+            for (int i = 1; i <= n; i++) {
+                result *= i;
+            }
+            return result;
+        }
+        
+        double taylorSeries(double x, int terms) {
+            double sum = 0.0;
+            for (int n = 0; n < terms; n++) {
+                sum += (pow(x, n) / factorial(n));
+            }
+            return sum;
+        }
+        
+        int main() {
+            double x;
+            int terms;
+        
+            printf("Enter the value of x: ");
+            scanf("%lf", &x);
+            printf("Enter the number of terms in the Taylor series: ");
+            scanf("%d", &terms);
+        
+            double result = taylorSeries(x, terms);
+            printf("e^%.2f ≈ %.6f\n", x, result);
+        
+            return 0;
+        }
+        
+</code></pre>
+</div>
+<div class="output-container" id="output21">
+    <h2>Output</h2>
+<pre><code>
+    Enter the value of x: 1
+    Enter the number of terms in the Taylor series: 10
+    e^1.00 ≈ 2.718282
+    
+</code></pre>
+</div>
+<div class="code-container" id="code22">
+    <h2>Code for Question 22</h2>
+<pre><code>
+    #include <stdio.h>
+        #include <math.h>
+        
+        double chebyshev(int n, double x) {
+            if (n == 0) {
+                return 1;
+            } else if (n == 1) {
+                return x;
+            } else {
+                return 2 * x * chebyshev(n - 1, x) - chebyshev(n - 2, x);
+            }
+        }
+        
+        int main() {
+            int n;
+            double x;
+        
+            printf("Enter the degree of the Chebyshev polynomial (n): ");
+            scanf("%d", &n);
+            printf("Enter the value of x: ");
+            scanf("%lf", &x);
+        
+            double result = chebyshev(n, x);
+            printf("T_%d(%.2f) = %.6f\n", n, x, result);
+        
+            return 0;
+        }
+        
+</code></pre>
+</div>
+<div class="output-container" id="output22">
+    <h2>Output</h2>
+<pre><code>
+    Enter the degree of the Chebyshev polynomial (n): 3
+    Enter the value of x: 0.5
+    T_3(0.50) = 0.875000
+    
+</code></pre>
+</div>
+        </div>
+    </div>
+
+    <script>
+        function showProgram(questionNumber) {
+            document.querySelectorAll('.code-container, .output-container').forEach((el) => {
+                el.style.display = 'none';
+            });
+
+            document.getElementById('code' + questionNumber).style.display = 'block';
+            document.getElementById('output' + questionNumber).style.display = 'block';
+            document.getElementById('output-container').style.display = 'flex';
+        }
+    </script>
+</body>
+</html>
